@@ -15,7 +15,7 @@ class CreateSuarasTable extends Migration
     {
         Schema::create('suaras', function (Blueprint $table) {
             $table->integer('id_pemilu');
-            $table->integer('npm');
+            $table->bigInteger('npm');
             $table->timestamps();
         });
     }

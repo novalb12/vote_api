@@ -73,48 +73,4 @@ class UserController extends Controller
             ]);
         }
     }
-    public function changePassword(Request $request){
-        if (Auth::user()) {
-            $user = Auth::User();
-            $validator = Validator::make($request->all(), [
-                'password_lama' => 'required',
-                'password_baru' => 'required|confirmed',
-            ]);
-
-            if ($validator->fails()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => $validator->errors(), ],401);
-            }
-
-            if (Hash::check($request->get('password_lama'), $user->password)) {
-                $user->password = bcrypt($request->get('password_baru'));
-                $user->save();
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Password Sudah Diubah'
-                    ]);
-
-            }
-            /*return response()->json([
-                    'success' => true,
-                    'message' => 'Logout successfully'
-                    ]);*/
-        }else {
-            return response()->json([
-                'success' => false,
-                'message' => 'user not authenticated'
-            ]);
-        }
-    }
-    public function details()
-    {
-        $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
-    }
-    public function tes()
-    {
-        return response()->json(['angka' => '1']);
-    }
-
 }

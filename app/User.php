@@ -39,6 +39,6 @@ class User extends Authenticatable
     ];
 
     public function suara(){
-        return $this->belongsToMany('App\Pemilu', 'suara', 'npm', 'id_pemilu');
+        return $this->belongsToMany('App\Pemilu', 'suaras', 'npm', 'id_pemilu');
     }
 }

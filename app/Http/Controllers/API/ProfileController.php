@@ -11,6 +11,7 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function getProfile(){
         $user = Auth::user();
         return response()->json([
