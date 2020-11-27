@@ -25,3 +25,4 @@ Route::get('/pemilufakultas', 'API\PemiluController@pemiluFakultas')->middleware
 Route::get('/pemiluuniv', 'API\PemiluController@pemiluUniv')->middleware('auth:api');
 Route::post('/cekpin', 'API\VoteController@cekPin')->middleware('auth:api');
 Route::post('/vote', 'API\VoteController@vote')->middleware('auth:api');
+Rout::get('/tes','API\UserController@tes');
