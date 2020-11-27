@@ -17,7 +17,7 @@ class UserController extends Controller
     public function login(){
         if(Auth::attempt(['npm' => request('npm'), 'password' => request('password')])){
             $user = Auth::user();
-            $success['token'] =  $user->createToken('vote_api')->accessToken;   
+            $success['token'] =  $user->createToken('vote_api')->accessToken;
             return response()->json([
                 'success' => true,
                 'token'   => $success,
@@ -72,5 +72,12 @@ class UserController extends Controller
                 'message' => 'Unable to Logout'
             ]);
         }
+    }
+
+    public function tes(){
+       return response()->json([
+                'success' => true,
+                'message' => 'masuk'
+            ]);
     }
 }
