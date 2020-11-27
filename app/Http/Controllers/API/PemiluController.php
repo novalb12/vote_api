@@ -9,7 +9,7 @@ use App\Pemilu;
 use App\Calon;
 use Auth;
 
-class VoteController extends Controller
+class PemiluController extends Controller
 {
     public function __construct()
     {

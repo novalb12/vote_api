@@ -53,17 +53,32 @@ class VoteController extends Controller
                 'success' => false,
                 'message' => $validator->errors(), ],401);
         }
-
         $calons = Calon::where('id_calon',$request->id_calon)->first();
-        $calons->suara = $calons->suara+1;
-        $calons->save();
         $pemilus = Pemilu::where('id_pemilu',$calons->id_pemilu)->first();
-        $pemilus->putUser(Auth::id());
+        if(\DB::table('suaras')
+            ->where('id_pemilu',$pemilus->id_pemilu)
+            ->where("npm",Auth::id())
+            ->exists())
+            {
+                return response()->json([
+                'success' => false,
+                'message' => 'anda sudah memilih',
+                ],401);
+            }
+
+        else{
+            $calons->suara = $calons->suara+1;
+            $pemilus->putUser(Auth::id());
+        }
+        $calons->save();
+
+
         //dd($pemilus->putUser(Auth::id()));
 
 
         return response()->json([
                 'success' => true,
-                'message' => $calons->suara, ],401);
+                'message' => $calons->suara,
+             ],401);
     }
 }
