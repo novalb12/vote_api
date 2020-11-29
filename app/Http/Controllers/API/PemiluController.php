@@ -23,6 +23,7 @@ class PemiluController extends Controller
 
         $pemilus = Pemilu::where('kategori', $prodi)->first();
         return response()->json([
+            'success' => True,
             'pemilu' => $pemilus,
             ]);
     }
@@ -33,6 +34,7 @@ class PemiluController extends Controller
 
         $pemilus = Pemilu::where('kategori', $fakultas)->first();
         return response()->json([
+            'success' => True,
             'pemilu' => $pemilus,
             ]);
     }
@@ -41,6 +43,7 @@ class PemiluController extends Controller
     {
         $pemilus = Pemilu::where('kategori','universitas')->first();
         return response()->json([
+            'success' => True,
             'pemilu' => $pemilus,
             ]);
     }
