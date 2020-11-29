@@ -23,7 +23,7 @@ class PemiluController extends Controller
 
         $pemilus = Pemilu::where('kategori', $prodi)->first();
 
-        $calons = Calon::where('id_pemilu',$pemilus->id_pemilu);
+        $calons = Calon::where('id_pemilu',$pemilus->id_pemilu)->get();
         $tes = Calon::all();
         return response()->json([
             'success' => True,
