@@ -22,11 +22,14 @@ class PemiluController extends Controller
         $prodi = substr($npm,0,4);
 
         $pemilus = Pemilu::where('kategori', $prodi)->first();
+
         $calons = Calon::where('id_pemilu',$pemilus->id_pemilu);
+        $tes = $pemilus->id_pemilu;
         return response()->json([
             'success' => True,
             'pemilu' => $pemilus,
             'calon'=> $calons,
+            'test'=>$tes
             ]);
     }
     public function pemiluFakultas()
