@@ -16,6 +16,7 @@ class CreateCalonsTable extends Migration
         Schema::create('calons', function (Blueprint $table) {
             $table->bigIncrements('id_calon');
             $table->integer('id_pemilu');
+            $table->integer('npm');
             $table->string('nama_calon');
             $table->string('nama_wakil');
             $table->longText('visi');

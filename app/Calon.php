@@ -11,5 +11,9 @@ class Calon extends Model
         return $this->belongsTo('App\Pemilu','id_pemilu','id_pemilu');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User','npm','npm');
+    }
+
 
 }
