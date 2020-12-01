@@ -28,4 +28,5 @@ class ProfileController extends Controller
             'success' => True,
             'user' => $user,],200);
     }
+
 }

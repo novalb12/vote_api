@@ -22,13 +22,20 @@ class PemiluController extends Controller
         $prodi = substr($npm,0,4);
 
         $pemilus = Pemilu::where('kategori', $prodi)->first();
-
-        $calons = Calon::where('id_pemilu',$pemilus->id_pemilu)->get();
-        return response()->json([
-            'success' => True,
-            'pemilu' => $pemilus,
-            'calon'=> $calons,
+        if($pemilus == null){
+            return response()->json([
+                'success' => False,
+                'message' => 'Pemilu yang anda belum diadakan'
             ]);
+        }
+        else{
+            $calons = Calon::where('id_pemilu',$pemilus->id_pemilu)->get();
+            return response()->json([
+                'success' => True,
+                'pemilu' => $pemilus,
+                'calon'=> $calons,
+                ]);
+        }
     }
     public function pemiluFakultas()
     {
@@ -36,23 +43,39 @@ class PemiluController extends Controller
         $fakultas = substr($npm,0,2);
 
         $pemilus = Pemilu::where('kategori', $fakultas)->first();
-        $calons = Calon::where('id_pemilu',$pemilus->id_pemilu)->get();
-        return response()->json([
-            'success' => True,
-            'pemilu' => $pemilus,
-            'calon'=> $calons,
+        if($pemilus == null){
+            return response()->json([
+                'success' => False,
+                'message' => 'Pemilu yang anda belum diadakan'
             ]);
+        }
+        else{
+            $calons = Calon::where('id_pemilu',$pemilus->id_pemilu)->get();
+            return response()->json([
+                'success' => True,
+                'pemilu' => $pemilus,
+                'calon'=> $calons,
+                ]);
+        }
     }
 
     public function pemiluUniv()
     {
         $pemilus = Pemilu::where('kategori','universitas')->first();
-        $calons = Calon::where('id_pemilu',$pemilus->id_pemilu)->get();
-        return response()->json([
-            'success' => True,
-            'pemilu' => $pemilus,
-            'calon'=> $calons,
+        if($pemilus == null){
+            return response()->json([
+                'success' => False,
+                'message' => 'Pemilu yang anda belum diadakan'
             ]);
+        }
+        else{
+            $calons = Calon::where('id_pemilu',$pemilus->id_pemilu)->get();
+            return response()->json([
+                'success' => True,
+                'pemilu' => $pemilus,
+                'calon'=> $calons,
+                ]);
+        }
     }
 
 }

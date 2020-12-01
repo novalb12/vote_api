@@ -73,9 +73,6 @@ class VoteController extends Controller
         $calons->save();
 
 
-        //dd($pemilus->putUser(Auth::id()));
-
-
         return response()->json([
                 'success' => true,
                 'message' => $calons->suara,
