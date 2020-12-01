@@ -8,6 +8,7 @@ use App\User;
 use App\Pemilu;
 use App\Calon;
 use Auth;
+use Validator;
 
 class PemiluController extends Controller
 {
@@ -76,6 +77,30 @@ class PemiluController extends Controller
                 'calon'=> $calons,
                 ]);
         }
+    }
+
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama_pemilu' => 'required',
+            'kategori' => 'required',
+            'timeline'  => 'required',
+            'pin'  => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors(), ],401);
+        }
+
+        $input = $request->all();
+        $pemilu = Pemilu::create($input);
+
+        return response()->json([
+            'success' => true,
+            'token'   => $success,
+            'pemilu'    => $pemilu],200);
     }
 
 }
