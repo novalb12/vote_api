@@ -26,5 +26,5 @@ Route::get('/pemiluuniv', 'API\PemiluController@pemiluUniv')->middleware('auth:a
 Route::post('/cekpin', 'API\VoteController@cekPin')->middleware('auth:api');
 Route::post('/vote', 'API\VoteController@vote')->middleware('auth:api');
 Route::post('/registerpemilu', 'API\PemiluController@register')->middleware('auth:api');
-Route::post('/registercalon', 'API\VoteController@register')->middleware('auth:api');
+Route::post('/registercalon', 'API\CalonController@register')->middleware('auth:api');
 Route::get('/tes','API\UserController@tes');
