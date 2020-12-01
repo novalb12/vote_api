@@ -21,6 +21,7 @@ class CreateCalonsTable extends Migration
             $table->longText('visi');
             $table->longText('misi');
             $table->longText('proker');
+            $table->string('fakultas');
             $table->integer('suara')->default(0);
             $table->timestamps();
         });
