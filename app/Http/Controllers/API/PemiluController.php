@@ -99,7 +99,6 @@ class PemiluController extends Controller
 
         return response()->json([
             'success' => true,
-            'token'   => $success,
             'pemilu'    => $pemilu],200);
     }
 
