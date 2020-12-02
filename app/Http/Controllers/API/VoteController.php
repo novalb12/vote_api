@@ -81,7 +81,7 @@ class VoteController extends Controller
     public function checkIfHasVote(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_calon' => 'required',
+            'id_pemilu' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -89,10 +89,8 @@ class VoteController extends Controller
                 'success' => false,
                 'message' => $validator->errors(), ],401);
         }
-        $calons = Calon::where('id_calon',$request->id_calon)->first();
-        $pemilus = Pemilu::where('id_pemilu',$calons->id_pemilu)->first();
         if(\DB::table('suaras')
-            ->where('id_pemilu',$pemilus->id_pemilu)
+            ->where('id_pemilu',$request->id_pemilu)
             ->where("npm",Auth::id())
             ->exists())
             {
