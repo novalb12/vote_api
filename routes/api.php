@@ -24,6 +24,7 @@ Route::get('/pemiluprodi', 'API\PemiluController@pemiluProdi')->middleware('auth
 Route::get('/pemilufakultas', 'API\PemiluController@pemiluFakultas')->middleware('auth:api');
 Route::get('/pemiluuniv', 'API\PemiluController@pemiluUniv')->middleware('auth:api');
 Route::post('/cekpin', 'API\VoteController@cekPin')->middleware('auth:api');
+Route::post('/cekifvote', 'API\VoteController@checkIfHasVote')->middleware('auth:api');
 Route::post('/vote', 'API\VoteController@vote')->middleware('auth:api');
 Route::post('/registerpemilu', 'API\PemiluController@register')->middleware('auth:api');
 Route::post('/registercalon', 'API\CalonController@register')->middleware('auth:api');

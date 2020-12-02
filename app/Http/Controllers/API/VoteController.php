@@ -80,7 +80,7 @@ class VoteController extends Controller
     }
     public function checkIfHasVote(Request $request)
     {
-$validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'id_calon' => 'required',
         ]);
 
