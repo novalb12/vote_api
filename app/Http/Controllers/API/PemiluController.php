@@ -26,7 +26,7 @@ class PemiluController extends Controller
         if($pemilus == null){
             return response()->json([
                 'success' => False,
-                'message' => 'Pemilu yang anda belum diadakan'
+                'message' => 'Pemilu belum diadakan'
             ]);
         }
         else{
@@ -47,7 +47,7 @@ class PemiluController extends Controller
         if($pemilus == null){
             return response()->json([
                 'success' => False,
-                'message' => 'Pemilu yang anda belum diadakan'
+                'message' => 'Pemilu belum diadakan'
             ]);
         }
         else{
@@ -66,7 +66,7 @@ class PemiluController extends Controller
         if($pemilus == null){
             return response()->json([
                 'success' => False,
-                'message' => 'Pemilu yang anda belum diadakan'
+                'message' => 'Pemilu belum diadakan'
             ]);
         }
         else{
