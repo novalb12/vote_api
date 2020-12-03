@@ -38,7 +38,6 @@ class CalonController extends Controller
 
         return response()->json([
             'success' => true,
-            'token'   => $success,
             'calon'    => $calon],200);
     }
 }

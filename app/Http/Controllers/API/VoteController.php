@@ -75,7 +75,35 @@ class VoteController extends Controller
 
         return response()->json([
                 'success' => true,
-                'message' => $calons->suara,
-             ],401);
+                'message' => 'Sukses Voting',
+             ],200);
+    }
+    public function checkIfHasVote(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_pemilu' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors(), ],401);
+        }
+        if(\DB::table('suaras')
+            ->where('id_pemilu',$request->id_pemilu)
+            ->where("npm",Auth::id())
+            ->exists())
+            {
+                return response()->json([
+                'success' => false,
+                'message' => 'anda sudah memilih',
+                ],401);
+            }
+        else{
+            return response()->json([
+                'success' => true,
+                'message' => 'belum voting',
+             ],200);
+        }
     }
 }

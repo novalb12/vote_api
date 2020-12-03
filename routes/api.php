@@ -18,13 +18,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/login', 'API\UserController@login');
 Route::post('/register', 'API\UserController@register');
+Route::get('/logout', 'API\UserController@logout');
 Route::get('/profile', 'API\ProfileController@getProfile')->middleware('auth:api');
+Route::post('/changepassword', 'API\UserController@changePassword')->middleware('auth:api');
 Route::post('/editprofile', 'API\ProfileController@editProfile')->middleware('auth:api');
 Route::get('/pemiluprodi', 'API\PemiluController@pemiluProdi')->middleware('auth:api');
 Route::get('/pemilufakultas', 'API\PemiluController@pemiluFakultas')->middleware('auth:api');
 Route::get('/pemiluuniv', 'API\PemiluController@pemiluUniv')->middleware('auth:api');
 Route::post('/cekpin', 'API\VoteController@cekPin')->middleware('auth:api');
+Route::post('/cekifvote', 'API\VoteController@checkIfHasVote')->middleware('auth:api');
 Route::post('/vote', 'API\VoteController@vote')->middleware('auth:api');
 Route::post('/registerpemilu', 'API\PemiluController@register')->middleware('auth:api');
-Route::post('/registercalon', 'API\VoteController@register')->middleware('auth:api');
+Route::post('/registercalon', 'API\CalonController@register')->middleware('auth:api');
 Route::get('/tes','API\UserController@tes');
