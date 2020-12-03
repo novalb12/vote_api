@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', 'API\UserController@login');
 Route::post('/register', 'API\UserController@register');
 Route::get('/profile', 'API\ProfileController@getProfile')->middleware('auth:api');
+Route::post('/changepassword', 'API\UserController@changePassword')->middleware('auth:api');
 Route::post('/editprofile', 'API\ProfileController@editProfile')->middleware('auth:api');
 Route::get('/pemiluprodi', 'API\PemiluController@pemiluProdi')->middleware('auth:api');
 Route::get('/pemilufakultas', 'API\PemiluController@pemiluFakultas')->middleware('auth:api');
