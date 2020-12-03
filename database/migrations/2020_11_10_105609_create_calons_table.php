@@ -18,6 +18,7 @@ class CreateCalonsTable extends Migration
             $table->integer('id_pemilu');
             $table->integer('npm');
             $table->string('nama_calon');
+            $table->string('fakultas');
             $table->longText('visi');
             $table->longText('misi');
             $table->longText('proker');
