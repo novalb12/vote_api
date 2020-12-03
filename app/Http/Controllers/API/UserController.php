@@ -98,7 +98,7 @@ class UserController extends Controller
             }
             else {
                 return response()->json([
-                    'success' => true,
+                    'success' => false,
                     'message' => 'Wrong old password'
                     ]);
             }
