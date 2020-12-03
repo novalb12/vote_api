@@ -87,7 +87,7 @@ class UserController extends Controller
                     'message' => $validator->errors(), ],401);
             }
 
-            if (Hash::check($request->get('password_lama'), $user->password)) {
+            else if (Hash::check($request->get('password_lama'), $user->password)) {
                 $user->password = bcrypt($request->get('password_baru'));
                 $user->save();
                 return response()->json([
@@ -95,6 +95,12 @@ class UserController extends Controller
                     'message' => 'Password Berhasil Diubah'
                     ]);
 
+            }
+            else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Wrong old password'
+                    ]);
             }
             /*return response()->json([
                     'success' => true,
