@@ -30,4 +30,5 @@ Route::post('/cekifvote', 'API\VoteController@checkIfHasVote')->middleware('auth
 Route::post('/vote', 'API\VoteController@vote')->middleware('auth:api');
 Route::post('/registerpemilu', 'API\PemiluController@register')->middleware('auth:api');
 Route::post('/registercalon', 'API\CalonController@register')->middleware('auth:api');
+Route::post('/forgetpassword','API\UserController@fogetPassword');
 Route::get('/tes','API\UserController@tes');

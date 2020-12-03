@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ResetPassword;
 use Validator;
 use Hash;
 
@@ -113,6 +116,16 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function forgetPassword(Request $request)
+    {
+        $user = User::where('email',$request->email)->first();
+        $newpassword = Str::random(10);
+        $user->password = bcrypt($newpassword);
+        $user->save();
+        Mail::to($request->email)->send(new ResetPassword($newpassword));
+    }
+
     public function tes(){
        return response()->json([
                 'success' => true,
