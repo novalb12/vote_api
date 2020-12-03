@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/login', 'API\UserController@login');
 Route::post('/register', 'API\UserController@register');
+Route::get('/logout', 'API\UserController@logout');
 Route::get('/profile', 'API\ProfileController@getProfile')->middleware('auth:api');
 Route::post('/changepassword', 'API\UserController@changePassword')->middleware('auth:api');
 Route::post('/editprofile', 'API\ProfileController@editProfile')->middleware('auth:api');
