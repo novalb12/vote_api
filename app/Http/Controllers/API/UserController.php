@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ResetPassword;
 use Validator;
 use Hash;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class UserController extends Controller
 {
@@ -123,7 +125,21 @@ class UserController extends Controller
         $newpassword = Str::random(10);
         $user->password = bcrypt($newpassword);
         $user->save();
-        Mail::to($request->email)->send(new ResetPassword($newpassword));
+        $text             = $newpassword;
+        $mail             = new PHPMailer\PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPDebug  = 1;
+        $mail->SMTPAuth   = true;
+        $mail->Host       = env('MAIL_HOST');
+        $mail->Port       = env('MAIL_PORT');
+        $mail->IsHTML(true);
+        $mail->Username = env('MAIL_USERNAME');
+        $mail->Password = env('MAIL_PASSWORD');
+        $mail->SetFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+        $mail->Subject = "New Password";
+        $mail->Body    = 'Password baru kamu adalah '+$text;
+        $mail->AddAddress($request->email);
+        $mail->send();
     }
 
     public function tes(){
